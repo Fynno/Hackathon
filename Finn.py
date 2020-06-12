@@ -1,8 +1,5 @@
-answers = ["penis", "fynn", "leohard", "Affe mit Waffe"]
-print(answers)
-
-
-def answers_upper(element, answers):
+def answers_upper(answers):
     for element in answers:
-        element.upper()
-    print(element)
+        list = []
+        list = element.lower()
+        print(list)
