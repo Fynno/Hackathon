@@ -1,5 +1,6 @@
-from Test import printer
+from Test import splitter
 
-printer()
+list = ("Hallo","Leo hat einen sehr kleinen Kopf","Stinker stinken","Pustekuchen")
+print(splitter(list))
 
 
