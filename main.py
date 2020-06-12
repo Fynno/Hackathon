@@ -1,7 +1,7 @@
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import pandas as pd
-from Splitter import split
+from Splitter import split, delete_punctuation
 import correction
 
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
@@ -20,9 +20,12 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
 
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
 
-wordsForCloud = " ".join(data)
+data = split(delete_punctuation(data))
+print(data[:100])
+print(correction.CorrectionFun(split(data[:100])))
 
-# print(correction.CorrectionFun(split(data[100:110])))
+
+wordsForCloud = " ".join(data)
 
 notOfInterest = "und von Der das den wir ist die auf im es da zu sind mit oder auch sein sollten aber wenn alle für ich sollte Nichts wie sie werden eine nach man sehr nicht".split()
 STOPWORDS.update(notOfInterest )

@@ -5,15 +5,13 @@ def CorrectionFun(words):
     spell = SpellChecker(language='de')
 
     unknownWords = spell.unknown(words)
-
+    data = " ".join(words)
     for x in unknownWords:
         try:
-            words.remove(x)
-
+            data.replace(x,spell.correction(x))
+            print("Wrong word:")
+            print(x)
         except ValueError:
             pass
-
-    for element in unknownWords:
-
-        words.append(spell.correction(element))
+    words = data.split()
     return words

@@ -18,14 +18,6 @@ def delete_punctuation(input):
     return clean
 
 
-
-
-
-
-
-
-97-122
-
 def count(list=[]):
     uniques = set(list)
     counter = {}
