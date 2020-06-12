@@ -1,4 +1,6 @@
 import pandas as pd
+from Splitter import split
+import correction
 
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     """Returns array of answers from excel file
@@ -15,3 +17,7 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     return answers_cleaned
 
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
+
+print(split(data[100:110]))
+
+print(correction.CorrectionFun(split(data[100:110])))
