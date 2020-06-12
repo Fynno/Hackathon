@@ -1,3 +1,5 @@
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 import pandas as pd
 from Splitter import split
 import correction
@@ -18,6 +20,10 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
 
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
 
-print(split(data[100:110]))
+wordsForCloud = " ".join(data)
 
-print(correction.CorrectionFun(split(data[100:110])))
+# print(correction.CorrectionFun(split(data[100:110])))
+
+wordcloud = WordCloud().generate(wordsForCloud)
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.show()
