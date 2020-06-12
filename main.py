@@ -1,3 +1,5 @@
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
 import pandas as pd
 from Splitter import split
 import correction
@@ -18,6 +20,14 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
 
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
 
-print(split(data[100:110]))
+wordsForCloud = " ".join(data)
 
-print(correction.CorrectionFun(split(data[100:110])))
+# print(correction.CorrectionFun(split(data[100:110])))
+
+notOfInterest = "und von Der das den wir ist die auf im es da zu sind mit oder auch sein sollten aber wenn alle für ich sollte Nichts wie sie werden eine nach man sehr nicht".split()
+STOPWORDS.update(notOfInterest )
+
+wordcloud = WordCloud(width=1600,height=800,background_color="white").generate(wordsForCloud)
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
