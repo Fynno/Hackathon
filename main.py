@@ -1,4 +1,4 @@
-from wordcloud import WordCloud
+from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import pandas as pd
 from Splitter import split
@@ -24,6 +24,10 @@ wordsForCloud = " ".join(data)
 
 # print(correction.CorrectionFun(split(data[100:110])))
 
-wordcloud = WordCloud().generate(wordsForCloud)
+notOfInterest = "und von Der das den wir ist die auf im es da zu sind mit oder auch sein sollten aber wenn alle für ich sollte Nichts wie sie werden eine nach man sehr nicht".split()
+STOPWORDS.update(notOfInterest )
+
+wordcloud = WordCloud(width=1600,height=800,background_color="white").generate(wordsForCloud)
 plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
 plt.show()
