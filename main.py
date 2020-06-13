@@ -5,8 +5,8 @@ from Splitter import split, delete_punctuation, delete_stopwords
 import correction
 import connections
 from Nmaxelements import Nmaxelements
-import os
-from slugify import slugify
+
+import re
 
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     """Returns array of answers from excel file
@@ -32,12 +32,8 @@ dataSplit = split(data)
 # correct typos in data
 # data = correction.CorrectionFun(dataSplit)
 
-dirname = os.path.dirname(os.path.abspath(__file__))
-print(dirname)
-filename = os.path.join(dirname, 'edu-text-analysis-experiments\texts\Answers.txt')
-print(slugify(filename))
-text_file = open(slugify(filename), "w",encoding='utf-8')
-text_file.write(" ".join(data))
+text_file = open("edu-text-analysis-experiments/texts/Answers.txt", "w",encoding='utf-8')
+text_file.write(re.sub('[^a-zA-Z0-9 ä]', ''," ".join(data)))
 text_file.close()
 
 #create_wordcloud(data)
