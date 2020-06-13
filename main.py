@@ -6,6 +6,15 @@ import correction
 import connections
 from Nmaxelements import Nmaxelements
 
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
+from frequent_words import create_wordcloud
+import pandas as pd
+from Splitter import split, delete_punctuation, delete_stopwords
+import correction
+import connections
+from Nmaxelements import Nmaxelements
+
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     """Returns array of answers from excel file
     Arguments:
@@ -30,14 +39,8 @@ dataSplit = split(data)
 # data = correction.CorrectionFun(dataSplit)
 
 
-wordsForCloud = " ".join(data)
-
 text_file = open("Answers.txt", "w",encoding='utf-8')
-text_file.write(wordsForCloud)
+text_file.write(" ".join(data))
 text_file.close()
 
-
-wordcloud = WordCloud(width=1600,height=800,background_color="white").generate(wordsForCloud)
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis("off")
-plt.show()
+#create_wordcloud(data)
