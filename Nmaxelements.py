@@ -12,4 +12,4 @@ def Nmaxelements(list1, N,dataSplit):
         list1[position[0]][position[1]]=0;
         final_list.append([max1, [words[position[0]],words[position[1]]]]) 
           
-    print(final_list) 
+    return final_list
