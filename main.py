@@ -8,7 +8,7 @@ from Nmaxelements import Nmaxelements
 
 import re
 
-def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
+def answers_to_array(input_xlsx, sheet_no = 3, answer_column = 'answer_text'):
     """Returns array of answers from excel file
     Arguments:
         input_xlsx (str): path of input file
@@ -27,12 +27,12 @@ data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text
 data = delete_stopwords([alphanum_only(element) for element in data])
 dataSplit = split(data)
 
-# print(Nmaxelements(connections.connectionTable(data,dataSplit),100,dataSplit))
+print(Nmaxelements(connections.connectionTable(data,dataSplit),100,dataSplit))
 
 # correct typos in data
 # data = correction.CorrectionFun(dataSplit)
 
-text_file = open("edu-text-analysis-experiments/texts/Answers.txt", "w",encoding='utf-8')
+text_file = open("connections.csv", "w",encoding='utf-8')
 text_file.write(data)
 text_file.close()
 
