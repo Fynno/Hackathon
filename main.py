@@ -32,10 +32,11 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
 
 data = delete_stopwords(delete_punctuation(data))
-
 dataSplit = split(data)
+
 # print(Nmaxelements(connections.connectionTable(data,dataSplit),100,dataSplit))
 
+# correct typos in data
 # data = correction.CorrectionFun(dataSplit)
 
 
