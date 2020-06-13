@@ -8,7 +8,6 @@ def split (list):
 
 def delete_punctuation(input):
     import string
-    whitelist = set('abcdefghijklmnopqrstuvwxyz äöüß')
     blacklist = list(string.punctuation)
     clean = input
     for letter in blacklist:
@@ -18,8 +17,11 @@ def delete_punctuation(input):
     return clean
 
 
-def count(list=[]):
-    uniques = set(list)
-    counter = {}
+def delete_stopwords(list1):
+    from stop_words import get_stop_words
+    stop_words = get_stop_words('german')
+    return [' '.join(words) for words in
+            [[word for word in answer.split(' ') if not word in stop_words] for answer in list1]]
+
 
 
