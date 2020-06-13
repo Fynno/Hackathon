@@ -14,7 +14,7 @@ def connectionTable(data,dataSplit):
         if len(element)> 2:
             print(element)
             for answers in data:
-                if element in answers:
+                if element +" " in answers:
                     everyElement = answers.split()
                     for x in everyElement:
                         if x != element:
