@@ -16,6 +16,9 @@ def delete_punctuation(input):
                 clean[i] = clean[i].replace(letter,' ')
     return clean
 
+def alphanum_only(list):
+    import re
+    return re.sub('[^a-zA-Z0-9 ä,ü,ö]', '', "".join(list))
 
 def delete_stopwords(list1):
     from stop_words import get_stop_words

@@ -1,7 +1,7 @@
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import pandas as pd
-from Splitter import split, delete_punctuation, delete_stopwords
+from Splitter import split, alphanum_only, delete_stopwords
 import correction
 import connections
 from Nmaxelements import Nmaxelements
@@ -24,7 +24,7 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
 
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
 
-data = delete_stopwords(delete_punctuation(data))
+data = delete_stopwords([alphanum_only(element) for element in data])
 dataSplit = split(data)
 
 # print(Nmaxelements(connections.connectionTable(data,dataSplit),100,dataSplit))
@@ -33,7 +33,7 @@ dataSplit = split(data)
 # data = correction.CorrectionFun(dataSplit)
 
 text_file = open("edu-text-analysis-experiments/texts/Answers.txt", "w",encoding='utf-8')
-text_file.write(re.sub('[^a-zA-Z0-9 ä]', ''," ".join(data)))
+text_file.write(data)
 text_file.close()
 
 #create_wordcloud(data)
