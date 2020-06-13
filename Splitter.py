@@ -23,5 +23,7 @@ def delete_stopwords(list1):
     return [' '.join(words) for words in
             [[word for word in answer.split(' ') if not word in stop_words] for answer in list1]]
 
+def delete_short_words(list1):
+    return [' '.join(words) for words in [[word for word in answer.split(' ') if len(word)>2]for answer in list1]]
 
 
