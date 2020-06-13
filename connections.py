@@ -20,8 +20,5 @@ def connectionTable(data,dataSplit):
                     if x != element:
                         bigTable[words.index(element)][words.index(x.lower())] = bigTable[words.index(element)][words.index(x.lower())] +1 
  
-                           
-                                
-
-    print(bigTable)
+                          
     return bigTable

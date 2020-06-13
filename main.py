@@ -4,6 +4,7 @@ import pandas as pd
 from Splitter import split, delete_punctuation
 import correction
 import connections
+from Nmaxelements import Nmaxelements
 
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     """Returns array of answers from excel file
@@ -24,7 +25,8 @@ data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text
 
 dataunSplit = delete_punctuation(data)
 dataSplit = split(delete_punctuation(data))
-connections.connectionTable(dataunSplit,dataSplit)
+print(Nmaxelements(connections.connectionTable(dataunSplit,dataSplit),100,dataSplit))
+
 
 data = correction.CorrectionFun(split(dataunSplit))
 
