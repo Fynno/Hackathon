@@ -24,21 +24,18 @@ data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text
 
 data = delete_stopwords(delete_punctuation(data))
 
-dataunSplit = data
 dataSplit = split(data)
-print(Nmaxelements(connections.connectionTable(dataunSplit,dataSplit),100,dataSplit))
+# print(Nmaxelements(connections.connectionTable(data,dataSplit),100,dataSplit))
 
-data = correction.CorrectionFun(split(dataunSplit))
+# data = correction.CorrectionFun(dataSplit)
 
 
 wordsForCloud = " ".join(data)
 
-text_file = open("Answers.txt", "w")
+text_file = open("Answers.txt", "w",encoding='utf-8')
 text_file.write(wordsForCloud)
 text_file.close()
 
-notOfInterest = "und von Der das den wir ist die auf im es da zu sind mit oder auch sein sollten aber wenn alle für ich sollte Nichts wie sie werden eine nach man sehr nicht".split()
-STOPWORDS.update(notOfInterest )
 
 wordcloud = WordCloud(width=1600,height=800,background_color="white").generate(wordsForCloud)
 plt.imshow(wordcloud, interpolation="bilinear")
