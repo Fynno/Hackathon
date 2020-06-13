@@ -5,15 +5,8 @@ from Splitter import split, delete_punctuation, delete_stopwords
 import correction
 import connections
 from Nmaxelements import Nmaxelements
-
-from wordcloud import WordCloud, STOPWORDS
-import matplotlib.pyplot as plt
-from frequent_words import create_wordcloud
-import pandas as pd
-from Splitter import split, delete_punctuation, delete_stopwords
-import correction
-import connections
-from Nmaxelements import Nmaxelements
+import os
+from slugify import slugify
 
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     """Returns array of answers from excel file
@@ -39,8 +32,11 @@ dataSplit = split(data)
 # correct typos in data
 # data = correction.CorrectionFun(dataSplit)
 
-
-text_file = open("Answers.txt", "w",encoding='utf-8')
+dirname = os.path.dirname(os.path.abspath(__file__))
+print(dirname)
+filename = os.path.join(dirname, 'edu-text-analysis-experiments\texts\Answers.txt')
+print(slugify(filename))
+text_file = open(slugify(filename), "w",encoding='utf-8')
 text_file.write(" ".join(data))
 text_file.close()
 
