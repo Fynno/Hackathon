@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from Splitter import split, delete_punctuation
 import correction
+import connections
+from Nmaxelements import Nmaxelements
 
 def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
     """Returns array of answers from excel file
@@ -20,9 +22,13 @@ def answers_to_array(input_xlsx, sheet_no = 0, answer_column = 'answer_text'):
 
 data = answers_to_array('Freitext.xls',sheet_no = 0,answer_column = 'answer_text')
 
-data = split(delete_punctuation(data))
-print(data[:100])
-print(correction.CorrectionFun(split(data[:100])))
+
+dataunSplit = delete_punctuation(data)
+dataSplit = split(delete_punctuation(data))
+print(Nmaxelements(connections.connectionTable(dataunSplit,dataSplit),100,dataSplit))
+
+
+data = correction.CorrectionFun(split(dataunSplit))
 
 
 wordsForCloud = " ".join(data)

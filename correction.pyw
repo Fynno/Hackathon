@@ -8,7 +8,7 @@ def CorrectionFun(words):
     data = " ".join(words)
     for x in unknownWords:
         try:
-            data.replace(x,spell.correction(x))
+            # data = data.replace(x,spell.correction(x))
             print("Wrong word:")
             print(x)
         except ValueError:

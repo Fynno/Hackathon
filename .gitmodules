@@ -1,0 +1,3 @@
+[submodule "edu-text-analysis-experiments"]
+	path = edu-text-analysis-experiments
+	url = https://github.com/ZitRos/edu-text-analysis-experiments.git
